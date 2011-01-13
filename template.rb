@@ -62,9 +62,9 @@ require "capybara/rails"
 Capybara.default_selector = :css
 
 module ActionController
-  class IntegrationTest
-    include Capybara
-  end
+  class IntegrationTest
+    include Capybara
+  end
 end
 END
   
@@ -72,10 +72,10 @@ END
   file "test_helper.rb", <<-END
 
 if ENV['COVERAGE']
-  require 'simplecov'
-  require 'merged_formatter'
-  SimpleCov.formatter = SimpleCov::Formatter::MergedFormatter
-  SimpleCov.start 'rails'
+  require 'simplecov'
+  require 'merged_formatter'
+  SimpleCov.formatter = SimpleCov::Formatter::MergedFormatter
+  SimpleCov.start 'rails'
 end
 
 ENV["RAILS_ENV"] = "test"
@@ -86,12 +86,12 @@ require 'factories'
 
 
 class ActiveSupport::TestCase
-  include ::FixtureBackground::ActiveSupport::TestCase
-
-  include RR::Adapters::TestUnit
-  
-  # Add more helper methods to be used by all tests here...
-  
+  include ::FixtureBackground::ActiveSupport::TestCase
+  
+  include RR::Adapters::TestUnit
+  
+  # Add more helper methods to be used by all tests here...
+  
 end
 END
 end
@@ -99,10 +99,10 @@ end
   file "lib/merged_formatter.rb", <<-END
 require 'simplecov-rcov'
 class SimpleCov::Formatter::MergedFormatter
-  def format(result)
-     SimpleCov::Formatter::HTMLFormatter.new.format(result)
-     SimpleCov::Formatter::RcovFormatter.new.format(result)
-  end
+  def format(result)
+    SimpleCov::Formatter::HTMLFormatter.new.format(result)
+    SimpleCov::Formatter::RcovFormatter.new.format(result)
+  end
 end
 END
 
