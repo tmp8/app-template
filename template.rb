@@ -55,6 +55,8 @@ rails/test_help
 END
 
 inside "test" do
+
+  run "touch factories.rb"
   file "intergration_test_helper.rb", <<-END
 require "test_helper"
 require "capybara/rails"
