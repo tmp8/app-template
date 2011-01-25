@@ -201,10 +201,14 @@ run "bundle install"
 
 # hoptoad
 
-hoptoad_api_key = ask_with_validation("Please enter your hoptoad api key.") { |api_key|
-  api_key =~ /[a-z0-9]{32}/
-}
-run "rails generate hoptoad --api-key #{ hoptoad_api_key }"
+if yes?("Configure hoptoad?")
+  hoptoad_api_key = ask_with_validation("Please enter your hoptoad api key.") { |api_key|
+    api_key =~ /[a-z0-9]{32}/
+  }
+  run "rails generate hoptoad --api-key #{ hoptoad_api_key }"
+else
+  say "Did not run 'rails generate hoptodad --api-key apikey'"
+end
 
 # devise
 
